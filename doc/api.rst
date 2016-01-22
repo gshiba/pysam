@@ -60,12 +60,12 @@ reads are represented as :class:`~pysam.PileupRead` objects in the
     for pileupcolumn in samfile.pileup("chr1", 100, 120):
 	print ("\ncoverage at base %s = %s" %
             (pileupcolumn.pos, pileupcolumn.n))
-    for pileupread in pileupcolumn.pileups:
-        if not pileupread.is_del and not pileupread.is_refskip:
-	    # query position is None if is_del or is_refskip is set.
-            print ('\tbase in read %s = %s' %
-                (pileupread.alignment.query_name,
-                 pileupread.alignment.query_sequence[pileupread.query_position]))
+        for pileupread in pileupcolumn.pileups:
+            if not pileupread.is_del and not pileupread.is_refskip:
+	        # query position is None if is_del or is_refskip is set.
+                print ('\tbase in read %s = %s' %
+                    (pileupread.alignment.query_name,
+                     pileupread.alignment.query_sequence[pileupread.query_position]))
 
     samfile.close()
 
